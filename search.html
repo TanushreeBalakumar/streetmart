@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Search Suppliers | StreetMart</title>
+  <link rel="stylesheet" href="search.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<div class="page-container">
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">StreetMart</div>
+    <ul class="nav-links">
+      <li><a href="vendor-dashboard.html">Dashboard</a></li>
+      <li><a href="#">Orders</a></li>
+      <li><a href="#">Recommendations</a></li>
+      <li><a href="contact.html">Support</a></li>
+      <li><a href="index.html">Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero & Search -->
+  <header class="search-header">
+    <h1>Find Raw Material Suppliers Near You</h1>
+    <form id="searchForm">
+      <input type="text" id="searchInput" placeholder="Search raw materials..." required />
+      <input type="text" id="locationInput" placeholder="Enter your location..." required />
+      <button type="submit">Search</button>
+    </form>
+  </header>
+
+  <!-- Results Section -->
+  <section id="results" class="card-container"></section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">StreetMart</div>
+      <div class="footer-social">
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="FB" /></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="Twitter" /></a>
+      </div>
+    </div>
+    <p class="footer-bottom">© 2025 StreetMart. All rights reserved.</p>
+  </footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const supabaseClient = supabase.createClient(
+    'https://xozctkjektlvqdhtucss.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhvemN0a2pla3RsdnFkaHR1Y3NzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM2MjQ2MTcsImV4cCI6MjA2OTIwMDYxN30.cJIxMfeYWm46Bv4dHB1R8LZDVhfLjw2qNkEh4T_9gXI'
+  );
+</script>
+</div>
+  <script src="search.js"></script>
+</body>
+</html>

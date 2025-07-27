@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StreetMart | Smarter Sourcing for Street Vendors</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">StreetMart</div>
+    <ul class="nav-links">
+      <li><a href="landing.html">Sign In / Register</a></li>
+      <li><a href="aboutus.html">About Us</a></li>
+      <li><a href="recommendation.html">Recommendations</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Empowering Street Vendors to Source Smarter & Fresher</h1>
+    <p>Bridge the gap between trusted suppliers and growing vendors with StreetMart.</p>
+    <div class="hero-buttons">
+      <button onclick="location.href='deler.html'">For Suppliers</button>
+      <button onclick="location.href='vendor.html'">For Vendors</button>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section">
+  <h2>Why Choose StreetMart?</h2>
+  <div class="features-container">
+    <div class="feature-box">
+      <span class="icon">🔍</span>
+      <div class="feature-text">
+        <h3>Real-Time Price Comparison</h3>
+        <p>Compare prices across vendors to get the best deals instantly.</p>
+      </div>
+    </div>
+    <div class="feature-box">
+      <span class="icon">📍</span>
+      <div class="feature-text">
+        <h3>Location-Based Supplier Search</h3>
+        <p>Find nearby suppliers to save on transportation costs.</p>
+      </div>
+    </div>
+    <div class="feature-box">
+      <span class="icon">✅</span>
+      <div class="feature-text">
+        <h3>Trusted Vendor Recommendations</h3>
+        <p>We list only reliable vendors reviewed by real users.</p>
+      </div>
+    </div>
+    <div class="feature-box">
+      <span class="icon">📊</span>
+      <div class="feature-text">
+        <h3>Insightful Dashboards</h3>
+        <p>Vendors and suppliers get tailored dashboards for performance tracking.</p>
+      </div>
+    </div>
+  </div>
+  <button class="show-more-btn" onclick="location.href='aboutus.html'">Know More</button>
+</section>
+
+
+  <!-- Recommended Vendors -->
+   <section class="recommended-suppliers">
+  <h2>Top Recommended Suppliers</h2>
+  <div class="supplier-cards">
+    <div class="card">
+      <h3>FreshFarm</h3>
+      <p>Rating: ⭐⭐⭐⭐☆</p>
+      <p>Best for fresh vegetables.</p>
+    </div>
+    <div class="card">
+      <h3>AgroMart</h3>
+      <p>Rating: ⭐⭐⭐⭐⭐</p>
+      <p>Affordable bulk produce.</p>
+    </div>
+    <div class="card">
+      <h3>GreenHarvest</h3>
+      <p>Rating: ⭐⭐⭐⭐☆</p>
+      <p>High quality leafy greens.</p>
+    </div>
+    <div class="card">
+      <h3>OrganicBazaar</h3>
+      <p>Rating: ⭐⭐⭐⭐☆</p>
+      <p>Organic certified vendors.</p>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <h2>What Our Vendors Say</h2>
+    <div class="testimonial">
+      <p>"StreetMart helped me reduce sourcing time and save money!"</p>
+      <h4>- Ramesh, Chaat Vendor</h4>
+    </div>
+  </section>
+
+  <!-- FAQs Section -->
+    <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-container">
+      <div class="faq-item"> 
+        <h4>How does StreetMart help vendors?</h4>
+        <p>StreetMart connects vendors with verified suppliers offering better prices and nearby sourcing options.</p>
+      </div>
+      <div class="faq-item"> 
+        <h4>Is registration free for suppliers and vendors?</h4>
+        <p>Yes! Signing up on StreetMart is completely free for both vendors and suppliers.</p>
+      </div>
+      <div class="faq-item"> 
+        <h4>Can I track my orders or history?</h4>
+        <p>Yes, dashboards will show order history, pricing insights, and more for smarter decisions.</p>
+      </div>
+      
+      <!-- Hidden initially -->
+      <div class="faq-item hidden-faq"> 
+        <h4>What types of suppliers are available?</h4>
+        <p>We list a wide range of suppliers – from fruits and vegetables to grains and dairy.</p>
+      </div>
+      <div class="faq-item hidden-faq"> 
+        <h4>Is support available if I face issues?</h4>
+        <p>Yes, we offer chat and call support to assist vendors and suppliers with any issue.</p>
+      </div>
+      <div class="faq-item hidden-faq"> 
+        <h4>How do I get recommended as a top vendor?</h4>
+        <p>Consistently fulfilling orders, receiving positive reviews, and maintaining fair prices can get you featured.</p>
+      </div>
+      <div class="faq-item hidden-faq"> 
+        <h4>Can I update my prices and availability anytime?</h4>
+        <p>Yes, vendors and suppliers can update their product listings anytime from their dashboards.</p>
+      </div>
+    </div>
+    <button class="show-more-btn" onclick="toggleFaqs()">Show More Questions</button>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-left">© 2025 StreetMart</div>
+    <div class="footer-right">
+      <a href="aboutus.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="#">Privacy</a>
+      <a href="#">Instagram</a>
+    </div>
+  </footer>
+  
+  <script>
+    let faqsExpanded = false;
+
+    function toggleFaqs() {
+      const hiddenFaqs = document.querySelectorAll('.hidden-faq');
+      const btn = document.querySelector('.show-more-btn');
+
+      if (!faqsExpanded) {
+        hiddenFaqs.forEach(faq => faq.style.display = 'block');
+        btn.textContent = 'Show Less';
+        faqsExpanded = true;
+      } else {
+        hiddenFaqs.forEach(faq => faq.style.display = 'none');
+        btn.textContent = 'Show More Questions';
+        faqsExpanded = false;
+      }
+    }
+  </script>
+
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vendor Dashboard | StreetMart</title>
+  <link rel="stylesheet" href="vendor-dashboard.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">StreetMart</div>
+    <ul class="nav-links">
+      <li><a href="vendor-orders.html">Orders</a></li>
+      <li><a href="#">Recommendations</a></li>
+      <li><a href="contact.html">Support</a></li>
+      <li><a href="index.html">Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- 🧾 Dashboard Container -->
+  <div class="dashboard-container">
+    <h1 class="title">Welcome Back, Vendor!</h1>
+
+    <!-- 📋 Purchase History -->
+    <section class="purchase-history">
+      <h2>Past Purchases</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Supplier</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2025-07-24</td>
+            <td>Tomatoes</td>
+            <td>25 kg</td>
+            <td>FreshFarm</td>
+          </tr>
+          <tr>
+            <td>2025-07-20</td>
+            <td>Onions</td>
+            <td>15 kg</td>
+            <td>VeggieMart</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 🛒 Buy More Button -->
+    <div class="buy-more-container">
+      <a href="search.html" class="buy-more-btn"> 🛒 Buy More</a>
+    </div>
+
+    <!-- 📊 Stats -->
+    <section class="stats">
+      <div class="stat-box">
+        <h3>10</h3>
+        <p>Total Orders</p>
+      </div>
+      <div class="stat-box">
+        <h3>₹8,500</h3>
+        <p>Total Spent</p>
+      </div>
+      <div class="stat-box">
+        <h3>3</h3>
+        <p>Suppliers Used</p>
+      </div>
+    </section>
+
+    <!-- ⭐ Top Recommended Vendors -->
+    <section class="recommended">
+      <h2>Top Recommended Suppliers</h2>
+      <div class="vendor-cards">
+        <div class="card">
+          <h3>FreshFarm</h3>
+          <p>Rating: ⭐⭐⭐⭐☆</p>
+          <p>Best for fresh vegetables.</p>
+        </div>
+        <div class="card">
+          <h3>AgroMart</h3>
+          <p>Rating: ⭐⭐⭐⭐⭐</p>
+          <p>Affordable bulk produce.</p>
+        </div>
+        <div class="card">
+          <h3>GreenHarvest</h3>
+          <p>Rating: ⭐⭐⭐⭐☆</p>
+          <p>High quality leafy greens.</p>
+        </div>
+        <div class="card">
+          <h3>OrganicBazaar</h3>
+          <p>Rating: ⭐⭐⭐⭐☆</p>
+          <p>Organic certified vendors.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>

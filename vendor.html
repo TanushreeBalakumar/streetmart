@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vendor Login/Register</title>
+  <link rel="stylesheet" href="deler.css">
+</head>
+<body class="center">
+
+  <div class="form-box">
+    <!-- Toggle Buttons -->
+    <div class="form-toggle">
+      <button id="login-toggle" class="active">Login</button>
+      <button id="register-toggle">Register</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="login-form" class="form">
+      <h2>Street Vendor Login</h2>
+      <input type="email" id="login-email" placeholder="Email" required>
+      <input type="password" id="login-password" placeholder="Password" required>
+      <button type="submit">Login</button>
+      
+      <a href="index.html" class="back-button">Back to home page</a>
+    </form>
+
+    <!-- Register Form -->
+    <form id="register-form" class="form hidden">
+      <h2>Street Vendor Register</h2>
+      <input type="text" id="register-name" placeholder="Full Name" required>
+      <input type="email" id="register-email" placeholder="Email" required>
+      <input type="password" id="register-password" placeholder="Password" required>
+      <input type="password" id="register-confirm-password" placeholder="Confirm Password" required>
+      <input type="text" id="register-shop-name" placeholder="Name of your shop" required>
+      <input type="text" id="register-shop-type" placeholder="Type of shop you have" required>
+      
+      <button type="submit">Register</button>
+      <a href="index.html" class="back-button">Back to home page</a>
+    </form>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script>
+  const supabaseClient = supabase.createClient(
+    'https://xozctkjektlvqdhtucss.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhvemN0a2pla3RsdnFkaHR1Y3NzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM2MjQ2MTcsImV4cCI6MjA2OTIwMDYxN30.cJIxMfeYWm46Bv4dHB1R8LZDVhfLjw2qNkEh4T_9gXI'
+  );
+</script>
+  <script src="vendor.js"></script>
+
+  <style>
+    .back-button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 10px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style>
+</body>
+</html>

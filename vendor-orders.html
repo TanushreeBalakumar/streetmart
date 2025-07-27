@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vendor Orders | StreetMart</title>
+  <link rel="stylesheet" href="vendor-orders.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">StreetMart</div>
+    <ul class="nav-links">
+      <li><a href="vendor-dashboard.html">Dashboard</a></li>
+      <li><a href="#">Orders</a></li>
+      <li><a href="#">Recommendations</a></li>
+      <li><a href="contact.html">Support</a></li>
+      <li><a href="index.html">Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- Orders Page Content -->
+  <div class="orders-container">
+    <h1>My Orders</h1>
+
+    <!-- Filter/Search Bar (optional) -->
+    <div class="filter-bar">
+      <input type="text" placeholder="Search by supplier or item..." />
+      <button>Search</button>
+    </div>
+
+    <!-- Orders Table -->
+    <table class="orders-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Supplier</th>
+          <th>Item</th>
+          <th>Quantity</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2025-07-25</td>
+          <td>FreshFarm</td>
+          <td>Tomatoes</td>
+          <td>25 kg</td>
+          <td class="delivered">Delivered</td>
+        </tr>
+        <tr>
+          <td>2025-07-23</td>
+          <td>AgroMart</td>
+          <td>Potatoes</td>
+          <td>40 kg</td>
+          <td class="pending">Pending</td>
+        </tr>
+        <tr>
+          <td>2025-07-20</td>
+          <td>GreenHarvest</td>
+          <td>Spinach</td>
+          <td>10 kg</td>
+          <td class="cancelled">Cancelled</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

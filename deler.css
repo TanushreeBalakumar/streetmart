@@ -1,0 +1,98 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #e6f9e3, #c6f5ce);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.form-box {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 100, 0, 0.1);
+  width: 340px;
+  max-width: 90%;
+}
+
+.form-toggle {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.form-toggle button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  background: #e0f4e8;
+  color: #2e7d32;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+  font-size: 1rem;
+}
+
+.form-toggle .active {
+  background: #4CAF50;
+  color: white;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form h2 {
+  text-align: center;
+  color: #2e7d32;
+  margin-bottom: 20px;
+}
+
+.form input {
+  margin-bottom: 15px;
+  padding: 12px;
+  border: 1px solid #a5d6a7;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.form button {
+  background: #4CAF50;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.form button:hover {
+  background: #388e3c;
+}
+
+.back-link {
+  text-align: center;
+  color: #4CAF50;
+  text-decoration: none;
+  font-size: 0.95rem;
+  margin-top: 10px;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.hidden {
+  display: none;
+}

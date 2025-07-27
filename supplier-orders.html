@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Supplier Orders - StreetMart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f4fef4;
+      color: #222;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #2e7d32;
+      color: #fff;
+      padding: 20px 30px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .navbar .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .navbar .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .navbar .nav-links li a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      padding: 40px;
+    }
+
+    .title {
+      font-size: 28px;
+      color: #2e7d32;
+      margin-bottom: 25px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    th, td {
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      font-weight: bold;
+    }
+
+    .status {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    .delivered {
+      background-color: #c8e6c9;
+      color: #2e7d32;
+    }
+
+    .pending {
+      background-color: #fff9c4;
+      color: #fbc02d;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      th, td {
+        padding: 10px;
+      }
+
+      .title {
+        font-size: 22px;
+      }
+
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .navbar .nav-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo">StreetMart</div>
+    <ul class="nav-links">
+      <li><a href="supplier-dashboard.html">Dashboard</a></li>
+      <li><a href="#">Inventory</a></li>
+      <li><a href="#">Support</a></li>
+      <li><a href="#">Logout</a></li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <h2 class="title">Orders Received</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Vendor Name</th>
+          <th>Item</th>
+          <th>Quantity</th>
+          <th>Status</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>#ORD1241</td>
+          <td>FreshMart</td>
+          <td>Tomatoes</td>
+          <td>20 kg</td>
+          <td><span class="status pending">Pending</span></td>
+          <td>27 July 2025</td>
+        </tr>
+        <tr>
+          <td>#ORD1238</td>
+          <td>Green Basket</td>
+          <td>Onions</td>
+          <td>15 kg</td>
+          <td><span class="status delivered">Delivered</span></td>
+          <td>26 July 2025</td>
+        </tr>
+        <tr>
+          <td>#ORD1225</td>
+          <td>Organic Zone</td>
+          <td>Carrots</td>
+          <td>10 kg</td>
+          <td><span class="status delivered">Delivered</span></td>
+          <td>25 July 2025</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

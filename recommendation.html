@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StreetMArt - Safe Vendor Finder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9fdf9;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      color: #333;
+    }
+
+    header, footer {
+      background-color: #2ecc71;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    header h1 {
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    header p {
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    main {
+      flex: 1;
+      padding: 40px 20px;
+    }
+
+    .vendor-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .vendor-card {
+      background-color: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      padding: 20px;
+      width: 320px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .vendor-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    }
+
+    .vendor-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .stars {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      font-size: 24px;
+      margin: 10px 0;
+    }
+
+    .star {
+      color: #d5d5d5;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .star.selected {
+      color: #f1c40f;
+    }
+
+    .rating-text {
+      font-size: 14px;
+      color: #555;
+      font-weight: 500;
+    }
+
+    .availability {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #27ae60;
+      font-weight: 500;
+    }
+
+    .buy-button {
+      margin-top: 15px;
+      background-color: #27ae60;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .buy-button:hover {
+      background-color: #219653;
+    }
+
+    .recommendation {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 16px;
+      color: #2d3436;
+      font-weight: 500;
+    }
+
+    footer {
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .vendor-card {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>StreetMArt - Safe Vendor Finder 🛒</h1>
+    <p>Promoting Hygiene & Transparency | Save Lives with Cleanliness 🧼</p>
+  </header>
+
+  <main>
+    <div class="vendor-grid" id="vendorContainer"></div>
+    <div class="recommendation">
+      🔍 Top Recommended Vendor: <span id="topVendor">Loading...</span>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 StreetMArt | Your Safety, Our Priority 💖
+  </footer>
+
+  <script>
+    const container = document.getElementById("vendorContainer");
+    const recommendationText = document.getElementById("topVendor");
+    const vendorRatings = {};
+
+    async function fetchVendors() {
+      try {
+        const res = await fetch("http://localhost:3000/vendors");
+        const vendors = await res.json();
+
+        vendors.forEach(vendor => {
+          const card = document.createElement("div");
+          card.className = "vendor-card";
+          card.innerHTML = `
+            <img src="${vendor.image_url}" alt="Vendor Image" class="vendor-image">
+            <h2>${vendor.name}</h2>
+            <p>${vendor.description}</p>
+            <div class="availability">Raw Materials: ${vendor.available_materials || 'N/A'}</div>
+            <div class="stars" data-id="${vendor.id}">
+              ${[1, 2, 3, 4, 5].map(r => `<span class="star" data-rating="${r}">&#9733;</span>`).join('')}
+            </div>
+            <div class="rating-text">Current avg: ${vendor.avg_rating}⭐</div>
+            <button class="buy-button" onclick="alert('You selected to buy from ${vendor.name}')">Buy from ${vendor.name}</button>
+          `;
+          container.appendChild(card);
+        });
+
+        setupStars();
+      } catch (err) {
+        console.error("Failed to fetch vendors:", err);
+      }
+    }
+
+    function setupStars() {
+      const allStarContainers = document.querySelectorAll('.stars');
+      allStarContainers.forEach(container => {
+        const stars = container.querySelectorAll('.star');
+        const ratingText = container.nextElementSibling;
+        const vendorId = container.getAttribute('data-id');
+        let selectedRating = 0;
+
+        stars.forEach(star => {
+          star.addEventListener('click', async () => {
+            selectedRating = parseInt(star.getAttribute('data-rating'));
+            vendorRatings[vendorId] = selectedRating;
+            ratingText.textContent = `You rated: ${selectedRating} star(s)`;
+
+            await fetch('http://localhost:3000/rate', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ vendor_id: vendorId, rating: selectedRating })
+            });
+
+            updateVisuals(stars, selectedRating);
+            updateRecommendation();
+          });
+        });
+      });
+    }
+
+    function updateVisuals(stars, rating) {
+      stars.forEach(star => {
+        const starRating = parseInt(star.getAttribute('data-rating'));
+        star.classList.toggle('selected', starRating <= rating);
+      });
+    }
+
+    function updateRecommendation() {
+      const entries = Object.entries(vendorRatings);
+      if (entries.length === 0) {
+        recommendationText.textContent = "None yet";
+        return;
+      }
+      const topId = entries.sort((a, b) => b[1] - a[1])[0][0];
+      const topCard = document.querySelector(`.stars[data-id="${topId}"]`).parentElement;
+      const topName = topCard.querySelector("h2").textContent;
+      recommendationText.textContent = topName;
+    }
+
+    fetchVendors();
+  </script>
+</body>
+</html>

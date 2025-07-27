@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>StreetMart Login/Register</title>
+  <link rel="stylesheet" href="deler.css">
+</head>
+<body class="center">
+
+  <div class="form-box">
+    <div class="form-toggle">
+      <button id="login-toggle" class="active">Login</button>
+      <button id="register-toggle">Register</button>
+    </div>
+
+    <form id="login-form" class="form">
+      <h2>Welcome Back 👋</h2>
+      <input type="email" id="login-email" placeholder="Email" required>
+      <input type="password" id="login-password" placeholder="Password" required>
+      <button type="submit">Login</button>
+      <a href="index.html" class="back-link">← Back to Home</a>
+    </form>
+
+    <form id="register-form" class="form hidden">
+      <h2>Join StreetMart 🌱</h2>
+      <input type="text" id="register-name" placeholder="Full Name" required>
+      <input type="email" id="register-email" placeholder="Email" required>
+      <input type="password" id="register-password" placeholder="Password" required>
+      <input type="password" id="register-confirm-password" placeholder="Confirm Password" required>
+      <input type="text" id="register-shop-name" placeholder="Shop Name" required>
+      <input type="text" id="register-shop-type" placeholder="Type of Shop" required>
+      <input type="text" id="register-location" placeholder="Enter your location" required />
+      <button type="submit">Register</button>
+      <!-- Removed vendor dashboard link -->
+    </form>
+  </div>
+
+  <!-- JS linked at end of body -->
+   <!-- Include this in your HTML before deler.js -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script>
+  const supabaseClient = supabase.createClient(
+    'https://xozctkjektlvqdhtucss.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhvemN0a2pla3RsdnFkaHR1Y3NzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM2MjQ2MTcsImV4cCI6MjA2OTIwMDYxN30.cJIxMfeYWm46Bv4dHB1R8LZDVhfLjw2qNkEh4T_9gXI'
+  );
+</script>
+
+  <script src="deler.js"></script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f0fff4;
+  color: #2f4f4f;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #2e7d32;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 100, 0, 0.1);
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  opacity: 0.8;
+}
+
+/* Hero Section */
+.search-header {
+  text-align: center;
+  padding: 50px 20px 30px;
+}
+
+.search-header h1 {
+  font-size: 2rem;
+  color: #2e7d32;
+  margin-bottom: 25px;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 10px;
+}
+
+form input,
+form button {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  border: 2px solid #2e7d32;
+}
+
+form input:focus {
+  outline: none;
+  border-color: #1b5e20;
+}
+
+form button {
+  background-color: #2e7d32;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #1b5e20;
+}
+
+/* Card Grid */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 20px 40px;
+  animation: fadeIn 0.8s ease-in;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 100, 0, 0.15);
+  transition: transform 0.3s;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-body h3 {
+  font-size: 1.1rem;
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+.card-body p {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  color: #444;
+}
+
+.card-body span {
+  font-weight: bold;
+  color: #1b5e20;
+}
+
+/* Footer */
+footer {
+  background-color: #e8f5e9;
+  margin-top: 40px;
+  padding: 30px 20px 10px;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: auto;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #c8e6c9;
+}
+
+.footer-logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 10px 0;
+}
+
+.footer-links li a {
+  color: #2e7d32;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-social a img {
+  width: 24px;
+  margin: 0 5px;
+}
+
+.footer-bottom {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #4b7c4b;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Make the entire page a flex container */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-container > *:not(footer,nav) {
+  flex: 1;
+}
+
+/* Optional: for smoother appearance */
+footer {
+  background-color: #d9f1dd;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #2f7a36;
+  border-top: 1px solid #c2e0c3;
+}
+
+.result-card {
+  background-color: #f5fff5;
+  border: 1px solid #cce5cc;
+  border-radius: 10px;
+  padding: 1.2rem;
+  margin: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+.result-card:hover {
+  transform: scale(1.03);
+}
+.result-card button {
+  margin-top: 10px;
+  background-color: #28a745;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Supplier Dashboard | StreetMart</title>
+  <link rel="stylesheet" href="supplier-dashboard.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">StreetMart</div>
+    <ul class="nav-links">
+      <li><a href="supplier-orders.html">Orders</a></li>
+      <li><a href="#" id="inventoryLink">Inventory</a></li>
+      <li><a href="contact.html">Support</a></li>
+      <li><a href="index.html">Logout</a></li>
+    </ul>
+  </nav>
+
+  <div class="dashboard-container">
+    <h1 class="title">Welcome Back, Supplier!</h1>
+
+    <!-- Recent Orders -->
+    <section class="orders">
+      <h2>Recent Orders Received</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Vendor</th>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2025-07-26</td>
+            <td>VeggieWorld</td>
+            <td>Potatoes</td>
+            <td>40 kg</td>
+            <td><span class="status delivered">Delivered</span></td>
+          </tr>
+          <tr>
+            <td>2025-07-25</td>
+            <td>GreenStore</td>
+            <td>Carrots</td>
+            <td>30 kg</td>
+            <td><span class="status pending">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+      <div class="stat-box"><h3>22</h3><p>Total Orders Fulfilled</p></div>
+      <div class="stat-box"><h3>₹12,400</h3><p>Total Earnings</p></div>
+      <div class="stat-box"><h3>15</h3><p>Vendors Served</p></div>
+    </section>
+
+    <!-- Inventory Management Toggle -->
+    <button id="toggleInventoryBtn" class="inventory-toggle-btn">📦 Inventory Management</button>
+
+    <!-- Inventory Cards -->
+    <section class="recommended">
+      <h2>Your Available Inventory</h2>
+      <div class="vendor-cards">
+        <div class="card">
+          <h3>Tomatoes</h3>
+          <p>Stock: 100 kg</p>
+          <p>Price: ₹25/kg</p>
+        </div>
+        <div class="card">
+          <h3>Spinach</h3>
+          <p>Stock: 80 kg</p>
+          <p>Price: ₹18/kg</p>
+        </div>
+        <div class="card">
+          <h3>Onions</h3>
+          <p>Stock: 120 kg</p>
+          <p>Price: ₹20/kg</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Inventory Management Section -->
+  <div id="inventorySection" class="inventory-section hidden">
+    <section class="inventory-management">
+      <h2>📦 Inventory Management</h2>
+      <table class="inventory-table">
+        <thead>
+          <tr>
+            <th>Item Name</th>
+            <th>Quantity</th>
+            <th>Unit</th>
+            <th>Price (₹/unit)</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="inventory-body">
+          <tr>
+            <td>Tomatoes</td>
+            <td>100</td>
+            <td>kg</td>
+            <td>25</td>
+            <td>
+              <button class="edit-btn">Edit</button>
+              <button class="delete-btn">Delete</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Onions</td>
+            <td>80</td>
+            <td>kg</td>
+            <td>20</td>
+            <td>
+              <button class="edit-btn">Edit</button>
+              <button class="delete-btn">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="inventory-form">
+        <h3>Add / Edit Item</h3>
+        <form id="inventoryForm">
+          <input type="text" id="itemName" placeholder="Item Name" required />
+          <input type="number" id="quantity" placeholder="Quantity" required />
+          <input type="text" id="unit" placeholder="Unit (e.g., kg)" required />
+          <input type="number" id="price" placeholder="Price per unit (₹)" required />
+          <button type="submit">Save Item</button>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById("toggleInventoryBtn");
+    const inventorySection = document.getElementById("inventorySection");
+    const inventoryLink = document.getElementById("inventoryLink");
+
+    // Toggle inventory section
+    toggleBtn.addEventListener("click", () => {
+      inventorySection.classList.toggle("hidden");
+      inventorySection.scrollIntoView({ behavior: "smooth" });
+    });
+
+    inventoryLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      inventorySection.classList.remove("hidden");
+      inventorySection.scrollIntoView({ behavior: "smooth" });
+    });
+
+    const inventoryForm = document.getElementById("inventoryForm");
+    const itemNameInput = document.getElementById("itemName");
+    const quantityInput = document.getElementById("quantity");
+    const unitInput = document.getElementById("unit");
+    const priceInput = document.getElementById("price");
+    const inventoryBody = document.getElementById("inventory-body");
+
+    let editingRow = null;
+
+    inventoryForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = itemNameInput.value;
+      const qty = quantityInput.value;
+      const unit = unitInput.value;
+      const price = priceInput.value;
+
+      if (editingRow) {
+        editingRow.cells[0].textContent = name;
+        editingRow.cells[1].textContent = qty;
+        editingRow.cells[2].textContent = unit;
+        editingRow.cells[3].textContent = price;
+        editingRow = null;
+      } else {
+        const newRow = document.createElement("tr");
+        newRow.innerHTML = `
+          <td>${name}</td>
+          <td>${qty}</td>
+          <td>${unit}</td>
+          <td>${price}</td>
+          <td>
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+          </td>`;
+        inventoryBody.appendChild(newRow);
+      }
+
+      itemNameInput.value = "";
+      quantityInput.value = "";
+      unitInput.value = "";
+      priceInput.value = "";
+    });
+
+    inventoryBody.addEventListener("click", function (e) {
+      if (e.target.classList.contains("edit-btn")) {
+        editingRow = e.target.closest("tr");
+        itemNameInput.value = editingRow.cells[0].textContent;
+        quantityInput.value = editingRow.cells[1].textContent;
+        unitInput.value = editingRow.cells[2].textContent;
+        priceInput.value = editingRow.cells[3].textContent;
+        inventorySection.scrollIntoView({ behavior: "smooth" });
+      }
+
+      if (e.target.classList.contains("delete-btn")) {
+        e.target.closest("tr").remove();
+      }
+    });
+  </script>
+</body>
+</html>
